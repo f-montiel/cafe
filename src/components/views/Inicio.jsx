@@ -1,6 +1,11 @@
+import Menu from "../common/Menu";
+import CardProducto from "./producto/CardProducto";
+
 const Inicio = () => {
     return(
-        <h1>Hello World</h1>
+        <section>
+            <CardProducto></CardProducto>
+        </section>
     );
 }
 export default Inicio;

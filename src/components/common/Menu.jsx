@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Menu = () => {
     return (
         <header>
-            <Navbar bg="danger" variant="dark" expand="lg">
+            <Navbar bg="danger" variant="dark" expand="lg" className="py-4">
                 <Container>
                     <Navbar.Brand as={Link} to="/">
                         React-Bootstrap

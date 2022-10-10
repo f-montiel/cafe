@@ -1,16 +1,17 @@
-import { Card, Button, Col } from "react-bootstrap";
+import { Card, Col, Button } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
-const CardProducto = () => {
+const CardProducto = ({producto}) => {
     return (
         <Col md={3}>
             <Card className="mx-2 my-2">
-                <Card.Img variant="top" src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=600" />
+                <Card.Img variant="top" src={producto.imagen} />
                 <Card.Body>
-                    <Card.Title>Cafe</Card.Title>
+                    <Card.Title>{producto.nombreProducto}</Card.Title>
                     <Card.Text>
-                        Precio: $250
+                        Precio: ${producto.precio}
                     </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+                    <NavLink to={`/detalleProducto/${producto.id}`} className={"btn btn-primary"}>Ver más</NavLink>
                 </Card.Body>
             </Card>
         </Col>

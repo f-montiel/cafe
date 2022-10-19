@@ -8,7 +8,7 @@ const DetalleProducto = ()=>{
     const {id} = useParams();
 
     useEffect(()=>{
-        consultaPorId(id).then((respuesta)=>{setProducto(respuesta)});
+        consultaPorId(id).then((respuesta)=>{setProducto(respuesta.dato)});
     }, [])
 
     return(

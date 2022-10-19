@@ -12,11 +12,6 @@ const Administrador = ()=>{
         });
     }, []);
 
-    const borrar = (id)=>{
-        let listaProductos = [...productos.filter((producto)=>{return producto.id !== id})]
-        borrarProducto(id).then((respuesta)=>{setProductos(listaProductos);});
-    }
-
     return(
         <Container className={"mainSection"}>
             <div className={"d-flex justify-content-between"}>
@@ -39,7 +34,7 @@ const Administrador = ()=>{
             </thead>
             <tbody>
                 {
-                    productos.map((producto)=>{return <ItemProducto producto={producto} borrar={borrar} key={producto.id}></ItemProducto>})
+                    productos.map((producto)=>{return <ItemProducto producto={producto} setProductos={setProductos} key={producto.id}></ItemProducto>})
                 }
             </tbody>
         </Table>

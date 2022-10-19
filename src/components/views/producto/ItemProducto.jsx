@@ -1,8 +1,9 @@
 import { Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import swal from "sweetalert";
+import { borrarProducto, consultarAPI } from "../../helpers/queries";
 
-const ItemProducto = ({producto, borrar}) => {
+const ItemProducto = ({producto, setProductos}) => {
     const confirmacion = ()=>{
         swal({
             title: "Estas seguro?",
@@ -12,16 +13,24 @@ const ItemProducto = ({producto, borrar}) => {
             dangerMode: true,
           })
           .then((willDelete) => {
-            if (willDelete) {
-              swal("Producto borrado", {
-                icon: "success",
-              });
-              borrar(producto.id);
+            if(willDelete) {
+              borrarProducto(producto.id).then((respuesta)=>{
+                if(respuesta.status===200){
+                  swal("Producto borrado", {
+                    icon: "success"
+                  });
+                  consultarAPI().then((respuesta)=>{
+                    setProductos(respuesta);
+                  });
+                }else{
+                  swal("El producto no fue borrado");    
+                }
+              })
             } else {
               swal("El producto no fue borrado");
             }
           });
-    }
+        }
     return (
         <tr>
             <td>{producto.id}</td>

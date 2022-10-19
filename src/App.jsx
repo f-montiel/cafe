@@ -10,6 +10,7 @@ import "./app.css"
 import DetalleProducto from './components/views/producto/DetalleProducto';
 import EditarProducto from './components/views/producto/EditarProducto';
 import CrearProducto from './components/views/producto/CrearProducto';
+
 function App() {
   return (
     <BrowserRouter>

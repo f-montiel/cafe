@@ -11,7 +11,7 @@ const CardProducto = ({producto}) => {
                     <Card.Text>
                         Precio: ${producto.precio}
                     </Card.Text>
-                    <NavLink to={`/detalleProducto/${producto.id}`} className={"btn btn-primary"}>Ver más</NavLink>
+                    <NavLink to={`/detalleProducto/${producto._id}`} className={"btn btn-primary"}>Ver más</NavLink>
                 </Card.Body>
             </Card>
         </Col>

@@ -18,6 +18,9 @@ const Login = ({consultarUsuarioLogueado})=>{
       let usuarioValidado = respuesta.filter((usuario)=>{
         return usuario.email === data.usuario && usuario.password === data.password;
       });
+
+      // find por el email -> Obtengo si existe un usuario con ese email -> el email no es correcto registrate.
+      // -> si existe el email chequeo que la contraseña este bien si esta bien logueo si esta mal alert. 
       if(usuarioValidado[0]){
         //agregar un mensaje de usuario logueado.
         console.log("Usuario valido");
@@ -26,6 +29,7 @@ const Login = ({consultarUsuarioLogueado})=>{
         consultarUsuarioLogueado(); 
         handleClose();
       }else{
+        // aca va el sweet alert
         alert("El usuario o la contraseña no son validos");
       }
     })

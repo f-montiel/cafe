@@ -19,6 +19,7 @@ const Registrar = ()=>{
         if(!nuevoUsuario[0]){
             guardarUsuario(data);
             handleClose();
+            // alertar que el usuario se creo correctamente.
         }else{
             alert("el usuario existe");
         }

@@ -5,34 +5,43 @@ import { Link } from "react-router-dom";
 import CerrarSesion from "../../CerrarSesion";
 import Login from "../../Login";
 import Registrar from "../../Registrar";
+import { useNavigate } from "react-router-dom";
 
 const Menu = () => {
     const [usuarioLogueado, setUsuarioLogueado] = useState(true);
+    const redirect = useNavigate();
+    
     const consultarUsuarioLogueado = () => {
         let usuario = sessionStorage.getItem("usuario");
         if (usuario) {
             setUsuarioLogueado(true);
         } else {
             setUsuarioLogueado(false);
+            redirect("/");
         }
     };
-    const mostrarBotones = (usuarioLogueado === false)?
-        (
+    const mostrarBotones =
+        usuarioLogueado === false ? (
             <>
                 <Login
-                    consultarUsuarioLogueado={
-                        consultarUsuarioLogueado
-                    }
+                    consultarUsuarioLogueado={consultarUsuarioLogueado}
                 ></Login>
-                <Registrar></Registrar>
             </>
-        ):(<CerrarSesion consultarUsuarioLogueado={
-            consultarUsuarioLogueado
-        }></CerrarSesion>);
+        ) : (
+            <>
+            <Registrar></Registrar>
+                <NavLink to="/administrador" className={"nav-item nav-link"}>
+                    Administrador
+                </NavLink>
+                <CerrarSesion
+                    consultarUsuarioLogueado={consultarUsuarioLogueado}
+                ></CerrarSesion>
+            </>
+        );
 
     useEffect(() => {
         consultarUsuarioLogueado();
-    }, []);
+    }, [usuarioLogueado]);
 
     return (
         <header>
@@ -47,15 +56,7 @@ const Menu = () => {
                             <NavLink to="/" className={"nav-item nav-link"}>
                                 Inicio
                             </NavLink>
-                            <NavLink
-                                to="/administrador"
-                                className={"nav-item nav-link"}
-                            >
-                                Administrador
-                            </NavLink>
-                            {
-                                mostrarBotones
-                            }
+                            {mostrarBotones}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

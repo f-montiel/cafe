@@ -23,7 +23,7 @@ const Login = ({consultarUsuarioLogueado})=>{
       // -> si existe el email chequeo que la contraseña este bien si esta bien logueo si esta mal alert. 
       if(usuarioValidado[0]){
         //agregar un mensaje de usuario logueado.
-        console.log("Usuario valido");
+
         // guardar en el ocal storage para que cuando lo cierre no se borre la sesion.
         sessionStorage.setItem("usuario", JSON.stringify(usuarioValidado));
         consultarUsuarioLogueado(); 

@@ -1,6 +1,6 @@
 const URLProducto = import.meta.env.VITE_URL_PRODUCTO;
 const URLUsuarios = import.meta.env.VITE_URL_USUARIO;
-
+const URLLogin = import.meta.env.VITE_URL_LOGIN;
 export const consultarAPI = async ()=>{
     try {
         let respuesta = await fetch(URLProducto);
@@ -86,6 +86,21 @@ export const guardarUsuario = async (usuario)=>{
             body: JSON.stringify(usuario)
         });
         return respuesta;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
+
+export const login = async(usuario)=>{
+    try {
+        let respuesta = await fetch(URLLogin, {
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json; charset=UTF-8'
+            },
+            body: JSON.stringify(usuario) 
+        })
     } catch (error) {
         console.log(error);
         return false;
